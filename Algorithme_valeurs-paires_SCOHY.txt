@@ -1,0 +1,49 @@
+Algorithme : Valeurs_paires_Romain_Scohy
+{Cet algorithme demande à l'utilisateur de rentrer des entiers. Il permet de compter le nombre de valeurs paires saisies}
+Variables :
+nbval : entier positif
+nbpairs : entier positif
+valeur : entier
+
+Début:
+	Afficher ("Saisissez une suite de 20 valeurs paires au maximum, s'il vous plait. 0 si vous voulez arrêter.")
+	Saisir(valeur)
+
+	/*
+	Ici, on pourrait très bien boucler avec une TANT QUE, pour demander au moins une valeur. J'ai préféré placer un Si
+	*/
+
+	Si valeur = '0' alors
+		Afficher("Pas de valeurs...")
+	Sinon
+		nbval <- 0
+		nbpairs <- 0
+		/*
+		J'ai choisi de mettre un != car il n'y pas marqué que les valeurs négatives étaient interdites
+		De même, j'ai écrit nbval, mais on pourrait mettre nbpairs à la place (je n'ai pas su le déduire de l'énoncé...)
+		*/
+
+		Tant que (valeur != 0) et (nbval <= 20) faire
+			Si valeur % 2 = 0 alors
+				nbpairs = nbpairs +1
+			Finsi
+
+		/*
+		On relance
+		*/
+
+		nbval <- nbval+1
+		Saisir(valeur)
+		FinTantQue
+		/*
+		Raison de sortie de boucle
+		*/
+
+		Si valeur = 0 alors
+			Afficher ("Sortie demandée par l'utilisateur.")
+		Sinon
+			Afficher ("Sortie par dépassement du nombre de valeurs entrées.")
+		FinSi
+	Afficher ("nbpairs," valeurs paires !")
+	FinSi
+Fin

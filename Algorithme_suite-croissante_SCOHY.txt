@@ -1,0 +1,44 @@
+﻿Algorithme : Suite croissante
+{ Cet algorithme vérifié que la suite de nombre entier rentrée soit bien croissante}
+
+CONSTANTES :
+	DERNIER  entier <-1000
+
+VARIABLES :
+	valp <- entier // Valeur précédante
+	valc <- entier // Valeur courante
+	rang <- entier // Rang lors de la saisie de la valeur courante
+
+DEBUT :
+Afficher ("Svp, rentrez une suite d'entiers dans l'ordre croissant")
+Afficher (DERNIER," pour terminer la suite")
+
+// On lit la première valeur
+Saisie (valp)
+Si valp = DERNIER
+	Afficher ("Si vous ne rentrez pas au moins 2 entiers...")
+Sinon
+	Saisie (valc)
+	Si valc = DERNIER alors
+		Afficher ("Pourquoi ne rentrez-vous pas au moins 2 valeurs ?")
+	Sinon
+		rang <- 2
+	
+		// Si une saisie ne vérifie pas la stricte croissance (Je pense que le valc != est inutile, vu que DERNIER vaut toujours -1000)
+		Tant que (valc != DERNIER) ET (valp < valc) faire
+			valp <- valc
+
+			// Relance
+			saisie(valc)
+			rang <- rang+1
+		FinTatntQue
+		
+		// Affichage et sortie
+		Si valc = DERNIER alors
+			Afficher ("Saisie correcte !")
+		Sinon
+			Afficher ("Problème lors de la saisie du ", rang, " ème nombre !")
+		FinSi
+	FinSi
+FinSi
+Fin
